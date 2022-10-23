@@ -13,5 +13,5 @@ interface ProductRepository {
 
     suspend fun getAllMyProducts(): Flow<BaseResult<List<ProductData>, WrappedListResponse<ProductResponse>>>
 
-    suspend fun createProduct(createProductRequest: CreateProductRequest):Flow<BaseResult<CreateProductRequest,WrappedResponse<CreateProductResponse>>>
+    suspend fun createProduct(createProductRequest: CreateProductRequest):Flow<BaseResult<CreateProductResponse,WrappedResponse<CreateProductResponse>>>
 }

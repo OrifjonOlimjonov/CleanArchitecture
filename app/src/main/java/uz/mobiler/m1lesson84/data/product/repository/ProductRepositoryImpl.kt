@@ -5,7 +5,10 @@ import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import uz.mobiler.m1lesson84.data.common.utils.WrappedListResponse
+import uz.mobiler.m1lesson84.data.common.utils.WrappedResponse
 import uz.mobiler.m1lesson84.data.product.remote.api.ProductService
+import uz.mobiler.m1lesson84.data.product.remote.models.CreateProductRequest
+import uz.mobiler.m1lesson84.data.product.remote.models.CreateProductResponse
 import uz.mobiler.m1lesson84.data.product.remote.models.ProductResponse
 import uz.mobiler.m1lesson84.domain.common.BaseResult
 import uz.mobiler.m1lesson84.domain.product.ProductRepository
@@ -42,6 +45,22 @@ class ProductRepositoryImpl @Inject constructor(
             } else {
                 val type = object : TypeToken<WrappedListResponse<ProductResponse>>() {}.type
                 val error = gson.fromJson<WrappedListResponse<ProductResponse>>(
+                    response.errorBody()!!.charStream(), type
+                )
+                emit(BaseResult.Error(error))
+            }
+        }
+    }
+
+    override suspend fun createProduct(createProductRequest: CreateProductRequest): Flow<BaseResult<CreateProductResponse, WrappedResponse<CreateProductResponse>>> {
+        return flow {
+            val response = productService.createProduct(createProductRequest)
+            if (response.isSuccessful) {
+                val body = response.body()
+                emit(BaseResult.Success(body?.data!!))
+            } else {
+                val type = object : TypeToken<WrappedResponse<CreateProductResponse>>() {}.type
+                val error = gson.fromJson<WrappedResponse<CreateProductResponse>>(
                     response.errorBody()!!.charStream(), type
                 )
                 emit(BaseResult.Error(error))
