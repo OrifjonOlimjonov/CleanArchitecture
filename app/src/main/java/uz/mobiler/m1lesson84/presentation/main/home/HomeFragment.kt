@@ -13,9 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import uz.mobiler.m1lesson84.R
 import uz.mobiler.m1lesson84.databinding.FragmentHomeBinding
-import uz.mobiler.m1lesson84.databinding.FragmentRegisterBinding
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -23,13 +21,13 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var adapter: HomeMainProductAdapter
+    private lateinit var adapter: HomeProductAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        adapter = HomeMainProductAdapter { productData, i ->
+        adapter = HomeProductAdapter { productData, i ->
 
         }
         binding.rvProducts.adapter = adapter

@@ -1,14 +1,13 @@
 package uz.mobiler.m1lesson84.presentation.main.home
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.mobiler.m1lesson84.databinding.ItemBinding
 import uz.mobiler.m1lesson84.domain.product.models.ProductData
 
-class HomeMainProductAdapter(var itemClickListener:(ProductData,Int)->Unit):androidx.recyclerview.widget.ListAdapter<ProductData,HomeMainProductAdapter.VH>(MyDiffUtils()) {
+class HomeProductAdapter(var itemClickListener:(ProductData, Int)->Unit):androidx.recyclerview.widget.ListAdapter<ProductData,HomeProductAdapter.VH>(MyDiffUtils()) {
 
     inner class VH(var binding: ItemBinding): RecyclerView.ViewHolder(binding.root){
         fun onBind(productData: ProductData,position: Int){
