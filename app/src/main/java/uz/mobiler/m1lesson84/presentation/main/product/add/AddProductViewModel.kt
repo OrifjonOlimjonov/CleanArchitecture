@@ -23,7 +23,9 @@ class AddProductViewModel @Inject constructor(
 
     private fun createProduct() {
         viewModelScope.launch {
+            createProductUseCase.create(products.value).collect{
 
+            }
         }
     }
 }
