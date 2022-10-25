@@ -6,13 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import uz.mobiler.m1lesson84.R
 import uz.mobiler.m1lesson84.databinding.FragmentHomeBinding
 
 @AndroidEntryPoint
@@ -33,6 +36,14 @@ class HomeFragment : Fragment() {
         binding.rvProducts.adapter = adapter
         observe()
 
+        setFragmentResultListener("success_create"){ requestKey, bundle ->
+            if(bundle.getBoolean("success_create")){
+                viewModel.getAllMyProducts()
+            }
+        }
+        binding.btnCreateProduct.setOnClickListener{
+            findNavController().navigate(R.id.addProductFragment)
+        }
         return binding.root
     }
 

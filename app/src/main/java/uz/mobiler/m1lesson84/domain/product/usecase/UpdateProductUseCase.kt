@@ -1,16 +1,16 @@
-package com.ydhnwb.cleanarchitectureexercise.domain.product.usecase
+package uz.mobiler.m1lesson84.domain.product.usecase
 
-import com.ydhnwb.cleanarchitectureexercise.data.common.utils.WrappedResponse
-import com.ydhnwb.cleanarchitectureexercise.data.product.remote.dto.ProductResponse
 import uz.mobiler.m1lesson84.data.product.remote.models.ProductUpdateRequest
-import com.ydhnwb.cleanarchitectureexercise.domain.common.base.BaseResult
-import com.ydhnwb.cleanarchitectureexercise.domain.product.ProductRepository
-import com.ydhnwb.cleanarchitectureexercise.domain.product.entity.ProductEntity
 import kotlinx.coroutines.flow.Flow
+import uz.mobiler.m1lesson84.data.common.utils.WrappedResponse
+import uz.mobiler.m1lesson84.data.product.remote.models.ProductResponse
+import uz.mobiler.m1lesson84.domain.common.BaseResult
+import uz.mobiler.m1lesson84.domain.product.ProductRepository
+import uz.mobiler.m1lesson84.domain.product.models.ProductData
 import javax.inject.Inject
 
 class UpdateProductUseCase @Inject constructor(private val productRepository: ProductRepository){
-    suspend fun invoke(productUpdateRequest: ProductUpdateRequest, id: String) : Flow<BaseResult<ProductEntity, WrappedResponse<ProductResponse>>> {
+    suspend fun invoke(productUpdateRequest: ProductUpdateRequest, id: String) : Flow<BaseResult<ProductData, WrappedResponse<ProductResponse>>> {
         return productRepository.updateProduct(productUpdateRequest, id)
     }
 }

@@ -26,7 +26,7 @@ class HomeViewModel @Inject constructor(
         getAllMyProducts()
     }
 
-    private fun getAllMyProducts() {
+        fun getAllMyProducts() {
         viewModelScope.launch {
             getAllMyProductUseCase.invoke()
                 .onStart {

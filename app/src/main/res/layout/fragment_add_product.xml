@@ -8,6 +8,16 @@
     android:padding="@dimen/_10sdp"
     tools:context=".presentation.main.product.add.AddProductFragment">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create a Product"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_22ssp"
+        android:fontFamily="sans-serif"
+        app:layout_constraintBottom_toTopOf="@id/etNameProduct"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etNameProduct"
@@ -19,9 +29,9 @@
         android:padding="@dimen/_10sdp"
         android:textColor="@color/black"
         android:textColorHint="#656565"
-        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintBottom_toTopOf="@id/etPriceProduct"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
         android:id="@+id/etPriceProduct"
@@ -38,11 +48,11 @@
         app:layout_constraintTop_toBottomOf="@id/etNameProduct" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnSave"
+        android:id="@+id/btnCreate"
         android:layout_width="@dimen/_100sdp"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
-        android:text="Save"
+        android:text="Create"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
