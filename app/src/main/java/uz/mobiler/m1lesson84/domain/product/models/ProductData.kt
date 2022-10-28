@@ -4,7 +4,7 @@ import java.io.Serializable
 
 data class ProductData(
     val id: Int,
-    val name: String,
-    val price: Int,
+    var name: String,
+    var price: Int,
     val user: ProductUserData
 ):Serializable

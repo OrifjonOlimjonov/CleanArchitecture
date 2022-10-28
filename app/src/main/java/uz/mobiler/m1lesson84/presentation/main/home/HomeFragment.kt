@@ -33,7 +33,7 @@ class HomeFragment : Fragment() {
         adapter = HomeProductAdapter { productData, i ->
             val bundle = Bundle()
             bundle.putSerializable("product", productData)
-            findNavController().navigate(R.id.updateProductFragment,bundle)
+            findNavController().navigate(R.id.infoProductFragment,bundle)
         }
         binding.rvProducts.adapter = adapter
         observe()
@@ -43,11 +43,13 @@ class HomeFragment : Fragment() {
                 viewModel.getAllMyProducts()
             }
         }
-        setFragmentResultListener("success_update") { requestKey, bundle ->
-            if (bundle.getBoolean("success_update")) {
+
+        setFragmentResultListener("success_delete") { requestKey, bundle ->
+            if (bundle.getBoolean("success_delete")) {
                 viewModel.getAllMyProducts()
             }
         }
+
         binding.btnCreateProduct.setOnClickListener {
             findNavController().navigate(R.id.addProductFragment)
         }

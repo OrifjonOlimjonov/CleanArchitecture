@@ -25,8 +25,8 @@ class UpdateProductFragment : Fragment() {
 
     private var _binding: FragmentUpdateProductBinding? = null
     private val binding get() = _binding!!
-    private lateinit var product:ProductData
-    private val viewModel:UpdateProductViewModel by viewModels()
+    private lateinit var product: ProductData
+    private val viewModel: UpdateProductViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,8 +34,6 @@ class UpdateProductFragment : Fragment() {
         _binding = FragmentUpdateProductBinding.inflate(inflater, container, false)
         product = arguments?.getSerializable("product") as ProductData
         observe()
-        update()
-
 
         binding.apply {
             etNameProduct.setText(product.name)
@@ -52,6 +50,7 @@ class UpdateProductFragment : Fragment() {
             .onEach { state -> handleState(state) }
             .launchIn(viewLifecycleOwner.lifecycleScope)
     }
+
     private fun handleState(state: UpdateProductProcess) {
         when (state) {
             is UpdateProductProcess.SuccessUpdate -> {
@@ -73,6 +72,7 @@ class UpdateProductFragment : Fragment() {
     private fun setResultOkToPreviousFragment() {
         val r = Bundle().apply {
             putBoolean("success_update", true)
+            putSerializable("update", product)
         }
         setFragmentResult("success_update", r)
     }
@@ -82,11 +82,13 @@ class UpdateProductFragment : Fragment() {
     }
 
     private fun update() {
-            val name = binding.etNameProduct.text.toString().trim()
-            val price = binding.etPriceProduct.text.toString().trim()
-            if (validate(name)) {
-                viewModel.update(ProductUpdateRequest(name, price.toInt()), product.id.toString())
-            }
+        val name = binding.etNameProduct.text.toString().trim()
+        val price = binding.etPriceProduct.text.toString().trim()
+        product.name = name
+        product.price = price.toInt()
+        if (validate(name)) {
+            viewModel.update(ProductUpdateRequest(name, price.toInt()), product.id.toString())
+        }
     }
 
     private fun validate(name: String): Boolean {
