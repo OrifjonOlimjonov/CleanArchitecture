@@ -25,4 +25,9 @@
         android:name="uz.mobiler.m1lesson84.presentation.main.product.add.AddProductFragment"
         android:label="fragment_add_product"
         tools:layout="@layout/fragment_add_product" />
+    <fragment
+        android:id="@+id/updateProductFragment"
+        android:name="uz.mobiler.m1lesson84.presentation.main.product.update.UpdateProductFragment"
+        android:label="fragment_update_product"
+        tools:layout="@layout/fragment_update_product" />
 </navigation>

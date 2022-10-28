@@ -48,12 +48,13 @@
         app:layout_constraintTop_toBottomOf="@id/etNameProduct" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnCreate"
+        android:id="@+id/btnUpdate"
         android:layout_width="@dimen/_100sdp"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
         android:text="Update"
         android:textAllCaps="false"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

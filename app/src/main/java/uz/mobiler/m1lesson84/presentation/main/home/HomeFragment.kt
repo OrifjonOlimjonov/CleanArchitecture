@@ -31,17 +31,24 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         adapter = HomeProductAdapter { productData, i ->
-
+            val bundle = Bundle()
+            bundle.putSerializable("product", productData)
+            findNavController().navigate(R.id.updateProductFragment,bundle)
         }
         binding.rvProducts.adapter = adapter
         observe()
 
-        setFragmentResultListener("success_create"){ requestKey, bundle ->
-            if(bundle.getBoolean("success_create")){
+        setFragmentResultListener("success_create") { requestKey, bundle ->
+            if (bundle.getBoolean("success_create")) {
                 viewModel.getAllMyProducts()
             }
         }
-        binding.btnCreateProduct.setOnClickListener{
+        setFragmentResultListener("success_update") { requestKey, bundle ->
+            if (bundle.getBoolean("success_update")) {
+                viewModel.getAllMyProducts()
+            }
+        }
+        binding.btnCreateProduct.setOnClickListener {
             findNavController().navigate(R.id.addProductFragment)
         }
         return binding.root
