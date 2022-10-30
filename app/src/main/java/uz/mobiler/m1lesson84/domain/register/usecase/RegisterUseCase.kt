@@ -11,5 +11,4 @@ class RegisterUseCase @Inject constructor(
     suspend fun invoke(registerRequest: RegisterRequest) =
         registerRepository.register(registerRequest)
 
-
 }

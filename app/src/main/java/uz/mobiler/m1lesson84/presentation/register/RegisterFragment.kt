@@ -31,7 +31,6 @@ class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
-    private val TAG = "RegisterFragment"
     private val viewModel: RegisterViewModel by viewModels()
 
     @Inject

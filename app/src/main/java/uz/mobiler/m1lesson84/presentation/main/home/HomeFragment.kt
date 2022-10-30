@@ -38,6 +38,10 @@ class HomeFragment : Fragment() {
         binding.rvProducts.adapter = adapter
         observe()
 
+        binding.btnProfile.setOnClickListener {
+            findNavController().navigate(R.id.profileFragment)
+        }
+
         setFragmentResultListener("success_create") { requestKey, bundle ->
             if (bundle.getBoolean("success_create")) {
                 viewModel.getAllMyProducts()

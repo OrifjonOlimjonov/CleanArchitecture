@@ -35,4 +35,9 @@
         android:name="uz.mobiler.m1lesson84.presentation.main.product.info.InfoProductFragment"
         android:label="fragment_info_product"
         tools:layout="@layout/fragment_info_product" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="uz.mobiler.m1lesson84.presentation.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
