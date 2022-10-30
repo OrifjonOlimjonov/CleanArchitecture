@@ -1,4 +1,4 @@
-package uz.mobiler.m1lesson84.domain.profile.usecase
+package uz.mobiler.m1lesson84.domain.profile.usecase.get
 
 import kotlinx.coroutines.flow.Flow
 import uz.mobiler.m1lesson84.data.common.utils.WrappedResponse

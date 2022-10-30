@@ -10,6 +10,7 @@ import uz.mobiler.m1lesson84.data.profile.remote.models.ProfileUserResponse
 import uz.mobiler.m1lesson84.domain.common.BaseResult
 import uz.mobiler.m1lesson84.domain.product.models.ProductUserData
 import uz.mobiler.m1lesson84.domain.profile.ProfileRepository
+import uz.mobiler.m1lesson84.domain.profile.models.RequestProfile
 import javax.inject.Inject
 
 class ProfileRepositoryImpl @Inject constructor(
@@ -25,6 +26,26 @@ class ProfileRepositoryImpl @Inject constructor(
                 val profileUser = ProductUserData(data!!.id, data.name, data.email)
                 emit(BaseResult.Success(profileUser))
             } else {
+                val type = object : TypeToken<WrappedResponse<ProfileUserResponse>>() {}.type
+                val error: WrappedResponse<ProfileUserResponse> = gson.fromJson(
+                    response.errorBody()?.charStream(),
+                    type
+                )
+                error.code = response.code()
+                emit(BaseResult.Error(error))
+            }
+        }
+    }
+
+    override suspend fun updateProfile(update: RequestProfile): Flow<BaseResult<ProductUserData, WrappedResponse<ProfileUserResponse>>> {
+        return flow {
+            val response = profileService.update(update)
+            if (response.isSuccessful) {
+                val body = response.body()
+                val data = body?.data
+                val profile = ProductUserData(data!!.id, data.name, data.email)
+                emit(BaseResult.Success(profile))
+            }else{
                 val type = object : TypeToken<WrappedResponse<ProfileUserResponse>>() {}.type
                 val error: WrappedResponse<ProfileUserResponse> = gson.fromJson(
                     response.errorBody()?.charStream(),

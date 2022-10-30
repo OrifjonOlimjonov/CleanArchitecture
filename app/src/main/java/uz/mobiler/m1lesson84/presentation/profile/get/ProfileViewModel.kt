@@ -1,4 +1,4 @@
-package uz.mobiler.m1lesson84.presentation.profile
+package uz.mobiler.m1lesson84.presentation.profile.get
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,8 +12,7 @@ import uz.mobiler.m1lesson84.data.common.utils.WrappedResponse
 import uz.mobiler.m1lesson84.data.profile.remote.models.ProfileUserResponse
 import uz.mobiler.m1lesson84.domain.common.BaseResult
 import uz.mobiler.m1lesson84.domain.product.models.ProductUserData
-import uz.mobiler.m1lesson84.domain.profile.usecase.ProfileUseCase
-import uz.mobiler.m1lesson84.presentation.login.LoginEventState
+import uz.mobiler.m1lesson84.domain.profile.usecase.get.ProfileUseCase
 import javax.inject.Inject
 
 

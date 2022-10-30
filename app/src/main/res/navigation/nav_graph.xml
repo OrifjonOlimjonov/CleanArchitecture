@@ -37,7 +37,12 @@
         tools:layout="@layout/fragment_info_product" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="uz.mobiler.m1lesson84.presentation.profile.ProfileFragment"
+        android:name="uz.mobiler.m1lesson84.presentation.profile.get.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/updateProfileFragment"
+        android:name="uz.mobiler.m1lesson84.presentation.profile.update.UpdateProfileFragment"
+        android:label="fragment_update_profile"
+        tools:layout="@layout/fragment_update_profile" />
 </navigation>
